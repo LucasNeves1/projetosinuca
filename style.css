@@ -1,0 +1,46 @@
+.dadosCampeonato{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+}
+.btnIniciar{
+    padding:10px;
+    background-image:linear-gradient(to right, green, greenyellow);
+    border:1px solid;
+    border-radius:5px;
+    margin:10px;
+
+    cursor:pointer;
+}
+.btnEditar{
+    padding:10px;
+    background-image:linear-gradient(to right, yellow, greenyellow);
+    border:1px solid;
+    border-radius:5px;
+    margin:10px;
+
+    cursor:pointer;
+}
+.btnRemover{
+    padding:10px;
+    background-image:linear-gradient(to right, red, sienna);
+    border:1px solid;
+    border-radius:5px;
+    margin:10px;
+
+    cursor:pointer;
+}
+.btnsLista{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:sa
+}
+.resultados{
+    display:flex;
+    flex-wrap: wrap;
+}
+.time{
+    width:10%;
+}
