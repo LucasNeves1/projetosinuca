@@ -22,6 +22,17 @@ if (($result_time) and ($result_time->rowCount() != 0)) {
     header("Location: index.php");
     exit();
 }
+
+$query_camp = "SELECT id, nome, premiacao, pontuacao, regras FROM campeonato LIMIT 1";
+$result_camp = $conn->prepare($query_camp);
+$result_camp->execute();
+
+if (($result_camp) and ($result_camp->rowCount() != 0)) {
+    $row_camp = $result_camp->fetch(PDO::FETCH_ASSOC);
+    extract($row_camp);
+    $limitePontos = $pontuacao;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,14 +72,14 @@ if (($result_time) and ($result_time->rowCount() != 0)) {
     <span>Nome do jogador 1: <?php echo $row_time['jogador1']; ?></span><br>
     <span>Nome do jogador 2: <?php echo $row_time['jogador2']; ?></span><br>
     <form id="edit-time" method="POST" action="">
-        <label>Pontuação: </label>
+        <label>Pontuação:</label>
         <input type="number" name="pontuacao" id="pontuacao" value="<?php
                                                                     if (isset($dados['pontuacao'])) {
                                                                         echo $dados['pontuacao'];
                                                                     } elseif (isset($row_time['pontuacao'])) {
                                                                         echo $row_time['pontuacao'];
                                                                     }
-                                                                    ?>" max="10"><br><br>
+                                                                    ?>" max="<?php $limitePontos ?>"><br><br>
 
 
         <input type="submit" value="Salvar" name="editTime">
@@ -78,7 +89,7 @@ if (($result_time) and ($result_time->rowCount() != 0)) {
             $dados['pontuacao'] = 0;
         } else {
             $win_condition = $dados['pontuacao'];
-            if ($win_condition == 10) {
+            if ($win_condition == $limitePontos) {
                 header("Location: vitoria.php?id=$id'");
             }
         }
@@ -107,6 +118,7 @@ if (($result_time) and ($result_time->rowCount() != 0)) {
         </script>
 
     </form>
+
 </body>
 
 </html>

@@ -42,7 +42,7 @@
         <input type="text" name="premiacaoCamp" id="premiacaoCamp"><br>
 
         <label>Pontuação necessária pra ganhar</label><br>
-        <input type="text" name="pontuacaoCamp" id="pontuacaoCamp"><br>
+        <input type="number" name="pontuacaoCamp" id="pontuacaoCamp"><br>
 
         <label>Regras</label><br>
         <textarea name="regrasCamp" id="regrasCamp"></textarea><br>

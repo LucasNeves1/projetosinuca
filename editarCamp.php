@@ -16,7 +16,7 @@ $result_camp->execute();
 
 if (($result_camp) and ($result_camp->rowCount() != 0)) {
     $row_camp = $result_camp->fetch(PDO::FETCH_ASSOC);
-    //var_dump($row_time);
+    var_dump($row_camp);
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não encontrado!</p>";
     header("Location: index.php");
@@ -28,7 +28,7 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Editar time</title>
+    <title>EDITAR CAMPEONATO</title>
 </head>
 
 <body>
@@ -37,7 +37,7 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
     //Verificar se o usuário clicou no botão
-    if (!empty($dados['editTime'])) {
+    if (!empty($dados['editCamp'])) {
         $empty_input = false;
         $dados = array_map('trim', $dados);
         if (in_array("", $dados)) {
@@ -45,9 +45,12 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
             echo "<p style='color: #f00;'>Erro: Necessário preencher todos campos!</p>";
         }
         if (!$empty_input) {
-            $query_up_time = "UPDATE tbtime SET pontuacao=:pontuacao WHERE id=:id";
+            $query_up_time = "UPDATE campeonato SET nome =:nome, premiacao=:premiacao, pontuacao=:pontuacao, regras=:regras WHERE id=:id";
             $edit_time = $conn->prepare($query_up_time);
+            $edit_time->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
+            $edit_time->bindParam(':premiacao', $dados['premiacao'], PDO::PARAM_STR);
             $edit_time->bindParam(':pontuacao', $dados['pontuacao'], PDO::PARAM_INT);
+            $edit_time->bindParam(':regras', $dados['regras'], PDO::PARAM_STR);
             $edit_time->bindParam(':id', $id, PDO::PARAM_INT);
             if ($edit_time->execute()) {
                 echo "<p style='color: green;'>Usuário editado com sucesso!</p>";
@@ -57,33 +60,42 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
         }
     }
     ?>
-    <span>Nome do time: <?php echo $row_time['nome']; ?></span><br>
-    <span>Nome do jogador 1: <?php echo $row_time['jogador1']; ?></span><br>
-    <span>Nome do jogador 2: <?php echo $row_time['jogador2']; ?></span><br>
     <form id="edit-time" method="POST" action="">
+        <label>Nome do campeonato:</label>
+        <input type="text" name="nome" id="nome" value="<?php
+                                                        if (isset($dados['nome'])) {
+                                                            echo $dados['nome'];
+                                                        } elseif (isset($row_camp['nome'])) {
+                                                            echo $row_camp['nome'];
+                                                        }
+                                                        ?>"><br><br>
+        <label>Premiação:</label>
+        <input type="text" name="premiacao" id="premiacao" value="<?php
+                                                                    if (isset($dados['premiacao'])) {
+                                                                        echo $dados['premiacao'];
+                                                                    } elseif (isset($row_camp['premiacao'])) {
+                                                                        echo $row_camp['premiacao'];
+                                                                    }
+                                                                    ?>"><br><br>
         <label>Pontuação: </label>
         <input type="number" name="pontuacao" id="pontuacao" value="<?php
                                                                     if (isset($dados['pontuacao'])) {
                                                                         echo $dados['pontuacao'];
-                                                                    } elseif (isset($row_time['pontuacao'])) {
-                                                                        echo $row_time['pontuacao'];
+                                                                    } elseif (isset($row_camp['pontuacao'])) {
+                                                                        echo $row_camp['pontuacao'];
                                                                     }
-                                                                    ?>" max="10"><br><br>
+                                                                    ?>"><br><br>
+        <label>Regras:</label>
+        <input type="textarea" name="regras" id="regras" value="<?php
+                                                                if (isset($dados['regras'])) {
+                                                                    echo $dados['regras'];
+                                                                } elseif (isset($row_camp['regras'])) {
+                                                                    echo $row_camp['regras'];
+                                                                }
+                                                                ?>"><br><br>
 
 
-        <input type="submit" value="Salvar" name="editTime">
-        <?php
-
-        if (empty($dados['pontuacao'])) {
-            $dados['pontuacao'] = 0;
-        } else {
-            $win_condition = $dados['pontuacao'];
-            if ($win_condition == 10) {
-                header("Location: vitoria.php?id=$id'");
-            }
-        }
-
-        ?>
+        <input type="submit" value="Salvar" name="editCamp">
 
     </form>
 </body>
