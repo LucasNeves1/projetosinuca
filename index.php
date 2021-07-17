@@ -9,11 +9,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./estilos/styleIndex.css" />
+
     <title>CAMPEONATO DE SINUCA</title>
 </head>
 
 <body>
-    <h1>DAR INICIO AO CAMPEONATO</h1>
+    <h1 class="cabecalho">CONFIGURAR CAMPEONATO</h1>
     <?php
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -35,19 +37,29 @@
     ?>
     <form name="cad-campeonato" method="POST" action="">
 
-        <label>Nome do campeonato</label><br>
-        <input type="text" name="nomeCamp" id="nomeCamp"><br>
+        <label class="centralizar">Nome do campeonato:</label>
+        <div class="formIndex">
+            <input type="text" name="nomeCamp" id="nomeCamp" class="labelFormIndex"><br>
+        </div>
 
-        <label>Premiação do campeonato</label><br>
-        <input type="text" name="premiacaoCamp" id="premiacaoCamp"><br>
+        <label class="centralizar">Premiação do campeonato:</label>
+        <div class="formIndex">
+            <input type="text" name="premiacaoCamp" id="premiacaoCamp" class="labelFormIndex"><br>
+        </div>
 
-        <label>Pontuação necessária pra ganhar</label><br>
-        <input type="number" name="pontuacaoCamp" id="pontuacaoCamp"><br>
+        <label class="centralizar">Pontuação necessária pra ganhar:</label>
+        <div class="formIndex">
+            <input type="number" name="pontuacaoCamp" id="pontuacaoCamp" class="labelFormIndex"><br>
+        </div>
+        </div>
 
-        <label>Regras</label><br>
-        <textarea name="regrasCamp" id="regrasCamp"></textarea><br>
-
-        <input type="submit" name="btnCadastrar" id="btnCadastar">
+        <label class="centralizar">Regras<br></label>
+        <div class="centralizar">
+            <textarea name="regrasCamp" id="regrasCamp" class="labelFormRegras"></textarea><br>
+        </div>
+        <div class="centralizar">
+            <input type="submit" name="btnCadastrar" id="btnCadastar" class="btnCadastrar" value="INICIAR">
+        </div>
 
 
 

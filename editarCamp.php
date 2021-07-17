@@ -16,7 +16,6 @@ $result_camp->execute();
 
 if (($result_camp) and ($result_camp->rowCount() != 0)) {
     $row_camp = $result_camp->fetch(PDO::FETCH_ASSOC);
-    var_dump($row_camp);
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não encontrado!</p>";
     header("Location: index.php");
@@ -28,6 +27,9 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./estilos/styleEditar.css" />
     <title>EDITAR CAMPEONATO</title>
 </head>
 
@@ -61,41 +63,50 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
     }
     ?>
     <form id="edit-time" method="POST" action="">
-        <label>Nome do campeonato:</label>
-        <input type="text" name="nome" id="nome" value="<?php
-                                                        if (isset($dados['nome'])) {
-                                                            echo $dados['nome'];
-                                                        } elseif (isset($row_camp['nome'])) {
-                                                            echo $row_camp['nome'];
-                                                        }
-                                                        ?>"><br><br>
-        <label>Premiação:</label>
-        <input type="text" name="premiacao" id="premiacao" value="<?php
-                                                                    if (isset($dados['premiacao'])) {
-                                                                        echo $dados['premiacao'];
-                                                                    } elseif (isset($row_camp['premiacao'])) {
-                                                                        echo $row_camp['premiacao'];
-                                                                    }
-                                                                    ?>"><br><br>
-        <label>Pontuação: </label>
-        <input type="number" name="pontuacao" id="pontuacao" value="<?php
-                                                                    if (isset($dados['pontuacao'])) {
-                                                                        echo $dados['pontuacao'];
-                                                                    } elseif (isset($row_camp['pontuacao'])) {
-                                                                        echo $row_camp['pontuacao'];
-                                                                    }
-                                                                    ?>"><br><br>
-        <label>Regras:</label>
-        <input type="textarea" name="regras" id="regras" value="<?php
-                                                                if (isset($dados['regras'])) {
-                                                                    echo $dados['regras'];
-                                                                } elseif (isset($row_camp['regras'])) {
-                                                                    echo $row_camp['regras'];
-                                                                }
-                                                                ?>"><br><br>
+        <label class="centralizar">Nome do campeonato:</label>
+        <div class="formEditar">
+            <input type="text" name="nome" id="nome" class="labelFormEditar" value="<?php
+                                                                                    if (isset($dados['nome'])) {
+                                                                                        echo $dados['nome'];
+                                                                                    } elseif (isset($row_camp['nome'])) {
+                                                                                        echo $row_camp['nome'];
+                                                                                    }
+                                                                                    ?>"><br><br>
+        </div>
+        <label class="centralizar">Premiação:</label>
+        <div class="formEditar">
+            <input type="text" name="premiacao" id="premiacao" class="labelFormEditar" value="<?php
+                                                                                                if (isset($dados['premiacao'])) {
+                                                                                                    echo $dados['premiacao'];
+                                                                                                } elseif (isset($row_camp['premiacao'])) {
+                                                                                                    echo $row_camp['premiacao'];
+                                                                                                }
+                                                                                                ?>"><br><br>
+        </div>
+        <label class="centralizar">Pontuação: </label>
+        <div class="formEditar">
+            <input type="number" name="pontuacao" id="pontuacao" class="labelFormEditar" value="<?php
+                                                                                                if (isset($dados['pontuacao'])) {
+                                                                                                    echo $dados['pontuacao'];
+                                                                                                } elseif (isset($row_camp['pontuacao'])) {
+                                                                                                    echo $row_camp['pontuacao'];
+                                                                                                }
+                                                                                                ?>"><br><br>
+        </div>
+        <label class="centralizar">Regras:</label>
+        <div class="formEditar">
+            <input type="textarea" name="regras" id="regras" class="labelFormRegras" value="<?php
+                                                                                            if (isset($dados['regras'])) {
+                                                                                                echo $dados['regras'];
+                                                                                            } elseif (isset($row_camp['regras'])) {
+                                                                                                echo $row_camp['regras'];
+                                                                                            }
+                                                                                            ?>"><br><br>
+        </div>
 
-
-        <input type="submit" value="Salvar" name="editCamp">
+        <div class="centralizar">
+            <input type="submit" value="Salvar" name="editCamp" class="btnCadastrar">
+        </div>
 
     </form>
 </body>
