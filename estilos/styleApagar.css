@@ -1,49 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-body {
+* {
 
     font-family: 'Poppins', sans-serif;
 
 }
+.centralizar{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 
-.formEditar{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-.labelFormEditar{
-    margin:15px;
-    padding:5px;
-    border: 1px solid;
-    border-color:grey;
-    border-radius:6px;
-    width:20%;
-}
-.labelFormRegras{
-    width:20%;
-    margin:15px;
-    padding:5px;
-    border: 1px solid;
-    border-color:grey;
-    border-radius:6px;
-    height: 130px;
-}
-.centralizar {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-.btnCadastrar{
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size:16px;
-    padding:16px;
-    border:1px solid black;
-    border-radius:20px;
-    background-color:greenyellow;
-    cursor:pointer;
-    text-transform: uppercase;
-}
-.voltar{
+.iniciar{
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     font-size:16px;
@@ -53,5 +20,15 @@ body {
     background-color:black;
     color:white;
     cursor:pointer;
-    margin-top:10px;
+}
+.novo{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size:16px;
+    padding:16px;
+    border:1px solid black;
+    border-radius:20px;
+    background-color:black;
+    color:white;
+    cursor:pointer;
 }

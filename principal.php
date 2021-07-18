@@ -44,7 +44,7 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
         <?php
         echo "<a href='./cadastrarTimes.php'><button class='btnIniciar'>INICIAR CAMPEONATO</button></a>";
         echo "<a href='./editarCamp.php?id=$id'><button class='btnEditar'>EDITAR REGRAS</button></a>";
-        echo "<a href='./apagarCamp.php?id=$id'><button class='btnRemover'>DELETAR CAMPEONATO</button></a>";
+        echo "<a href='./apagarTimes.php'><button class='btnRemover'>DELETAR CAMPEONATO</button></a>";
         ?>
     </div>
 

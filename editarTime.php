@@ -23,23 +23,16 @@ if (($result_time) and ($result_time->rowCount() != 0)) {
     exit();
 }
 
-$query_camp = "SELECT id, nome, premiacao, pontuacao, regras FROM campeonato LIMIT 1";
-$result_camp = $conn->prepare($query_camp);
-$result_camp->execute();
-
-if (($result_camp) and ($result_camp->rowCount() != 0)) {
-    $row_camp = $result_camp->fetch(PDO::FETCH_ASSOC);
-    extract($row_camp);
-    $limitePontos = $pontuacao;
-}
-
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
-    <title>Editar time</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./estilos/styleEditarTimes.css" />
+    <title>ALTERAR PONTUAÇÃO</title>
 </head>
 
 <body>
@@ -61,64 +54,75 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
             $edit_time->bindParam(':pontuacao', $dados['pontuacao'], PDO::PARAM_INT);
             $edit_time->bindParam(':id', $id, PDO::PARAM_INT);
             if ($edit_time->execute()) {
-                echo "<p style='color: green;'>Usuário editado com sucesso!</p>";
+                echo "<center><p style='color: green;'>Pontuação alterada!</p></center>";
             } else {
-                echo "<p style='color: #f00;'>Erro: Usuário não editado com sucesso!</p>";
+                echo "<center><p style='color: #f00;'>Pontuação não alterada!</p></center>";
             }
         }
     }
     ?>
-    <span>Nome do time: <?php echo $row_time['nome']; ?></span><br>
-    <span>Nome do jogador 1: <?php echo $row_time['jogador1']; ?></span><br>
-    <span>Nome do jogador 2: <?php echo $row_time['jogador2']; ?></span><br>
+    <h1 class="centralizar"><?php echo $row_time['nome']; ?></h1><br>
+    <span class="centralizar">Nome do jogador 1: <br><?php echo $row_time['jogador1']; ?></span><br>
+    <span class="centralizar">Nome do jogador 2: <br><?php echo $row_time['jogador2']; ?></span><br>
     <form id="edit-time" method="POST" action="">
-        <label>Pontuação:</label>
-        <input type="number" name="pontuacao" id="pontuacao" value="<?php
-                                                                    if (isset($dados['pontuacao'])) {
-                                                                        echo $dados['pontuacao'];
-                                                                    } elseif (isset($row_time['pontuacao'])) {
-                                                                        echo $row_time['pontuacao'];
-                                                                    }
-                                                                    ?>" max="<?php $limitePontos ?>"><br><br>
+        <label class="centralizar">Pontuação:</label>
+        <div class="centralizar"><input type="number" name="pontuacao" id="pontuacao" class="inputPont" value="<?php
+                                                                                                                if (isset($dados['pontuacao'])) {
+                                                                                                                    echo $dados['pontuacao'];
+                                                                                                                } elseif (isset($row_time['pontuacao'])) {
+                                                                                                                    echo $row_time['pontuacao'];
+                                                                                                                }
+                                                                                                                ?>"><br><br></div>
 
+        <div class="centralizar">
+            <button onClick="aumentaPont();" class="btnAumentar">+</button>
 
-        <input type="submit" value="Salvar" name="editTime">
+            <button onClick="diminuiPont();" class="btnDiminuir">-</button>
+        </div>
+        <div class="centralizar"><input type="submit" value="Salvar" name="editTime" class="btnSalvar"></div>
         <?php
+
+        $query_camp = "SELECT id, nome, premiacao, pontuacao, regras FROM campeonato LIMIT 1";
+        $result_camp = $conn->prepare($query_camp);
+        $result_camp->execute();
+
+        if (($result_camp) and ($result_camp->rowCount() != 0)) {
+            $row_camp = $result_camp->fetch(PDO::FETCH_ASSOC);
+            extract($row_camp);
+            $limitePontos = $pontuacao;
+        }
 
         if (empty($dados['pontuacao'])) {
             $dados['pontuacao'] = 0;
         } else {
             $win_condition = $dados['pontuacao'];
             if ($win_condition == $limitePontos) {
-                header("Location: vitoria.php?id=$id'");
+                header("Location: vitoria.php?id=$id");
             }
         }
 
         ?>
-        <button onClick="aumentaPont();">Aumentar</button>
 
-        <button onClick="diminuiPont();">Diminuir</button>
-
-        <script>
-            function aumentaPont() {
-
-                var campo = document.getElementById("pontuacao")
-
-                campo.value = parseInt(campo.value) + 1;
-
-            }
-
-            function diminuiPont() {
-
-                var campo = document.getElementById("pontuacao")
-
-                campo.value = parseInt(campo.value) - 1;
-
-            }
-        </script>
 
     </form>
+    <div class="centralizar"><a href="./listarTimes.php"><button class="voltar">VOLTAR PARA TABELA DE TIMES</button></a></div>
+    <script>
+        function aumentaPont() {
 
+            var campo = document.getElementById("pontuacao")
+
+            campo.value = parseInt(campo.value) + 1;
+
+        }
+
+        function diminuiPont() {
+
+            var campo = document.getElementById("pontuacao")
+
+            campo.value = parseInt(campo.value) - 1;
+
+        }
+    </script>
 </body>
 
 </html>

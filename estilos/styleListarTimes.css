@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+}
+.centralizar {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.resultados{
+    display:flex;
+    flex-wrap: wrap;
+}
+.time{
+    width:10%;
+    border:1px solid;
+    margin:20px;
+    border-radius:3px;
+    padding:15px;
+}
+.btnAlterar{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size:16px;
+    padding:8px;
+    border:1px solid black;
+    border-radius:20px;
+    background-color:yellow;
+    cursor:pointer;
+
+    margin-top:15px;
+}
+
+.btnInscrever{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size:16px;
+    padding:8px;
+    border:1px solid black;
+    border-radius:20px;
+    background-color:rebeccapurple;
+    cursor:pointer;
+    color:white;
+
+    margin-top:15px;
+}
+.nomeTimes{
+    border-bottom:1px solid; 
+    font-size:18px; 
+    font-weight: bold;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+

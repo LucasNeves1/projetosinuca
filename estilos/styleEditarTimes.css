@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+}
+.centralizar {
+display:flex;
+justify-content: center;
+align-items: center;
+}
+.inputPont{
+    width:5%;
+    font-size:50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight:900;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnSalvar{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size:16px;
+    padding:16px;
+    border:1px solid black;
+    border-radius:20px;
+    background-color:greenyellow;
+    cursor:pointer;
+    margin:10px;
+}
+.btnAumentar{
+    border:1px solid;
+    border-radius:20px;
+    font-size:50px;
+    background-color:royalblue;
+    margin:5px;
+    padding:20px;
+    cursor:pointer;
+}
+.btnAumentar:hover{
+    border:1px solid;
+    border-radius:20px;
+    font-size:50px;
+    background-color:white;
+    margin:5px;
+    padding:20px;
+}
+.btnDiminuir{
+    border:1px solid;
+    border-radius:20px;
+    font-size:50px;
+    background-color:tomato;
+    margin:5px;
+    padding:20px;
+    padding-left:26px;
+    padding-right:26px;
+    cursor:pointer;
+}
+.btnDiminuir:hover{
+    border:1px solid;
+    border-radius:20px;
+    font-size:50px;
+    background-color:white;
+    margin:5px;
+    padding:20px;
+    padding-left:26px;
+    padding-right:26px;
+    cursor:pointer;
+}
+.voltar{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size:16px;
+    padding:16px;
+    border:1px solid black;
+    border-radius:20px;
+    background-color:black;
+    color:white;
+    cursor:pointer;
+    margin:10px;
+}

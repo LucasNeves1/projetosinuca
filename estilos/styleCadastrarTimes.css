@@ -4,13 +4,24 @@ body {
     font-family: 'Poppins', sans-serif;
 
 }
-
-.formEditar{
+.centralizar {
     display:flex;
     justify-content: center;
     align-items: center;
 }
-.labelFormEditar{
+.cabecalho{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:40px;
+    font-family: 'Poppins', sans-serif;
+}
+.formTimes{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.labelFormTimes{
     margin:15px;
     padding:5px;
     border: 1px solid;
@@ -42,8 +53,11 @@ body {
     background-color:greenyellow;
     cursor:pointer;
     text-transform: uppercase;
+    
+    margin:10px;
 }
-.voltar{
+.btnListimes{
+
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     font-size:16px;
@@ -53,5 +67,4 @@ body {
     background-color:black;
     color:white;
     cursor:pointer;
-    margin-top:10px;
 }

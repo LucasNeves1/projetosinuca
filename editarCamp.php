@@ -55,9 +55,9 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
             $edit_time->bindParam(':regras', $dados['regras'], PDO::PARAM_STR);
             $edit_time->bindParam(':id', $id, PDO::PARAM_INT);
             if ($edit_time->execute()) {
-                echo "<p style='color: green;'>Usuário editado com sucesso!</p>";
+                echo "<center><p style='color: green;'>Campeonato editado com sucesso!</p></center>";
             } else {
-                echo "<p style='color: #f00;'>Erro: Usuário não editado com sucesso!</p>";
+                echo "<p style='color: #f00;'>Erro: Campeonato não editado com sucesso!</p>";
             }
         }
     }
@@ -109,6 +109,7 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
         </div>
 
     </form>
+    <div class="centralizar"><a href="./principal.php"><button class="voltar">VOLTAR</button></a></div>
 </body>
 
 </html>

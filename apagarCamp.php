@@ -14,7 +14,15 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
 
 
     if ($apagar_camp->execute()) {
-        echo "Campeonato encerrado";
+        $query_times = "SELECT * FROM tbtime";
+        $result_times = $conn->prepare($query_times);
+        $result_times->execute();
+
+        if (($result_times) and ($result_times->rowCount() != 0)) {
+            $query_del_times = "DELETE FROM tbtime";
+            $apagar_times = $conn->prepare($query_del_times);
+            header("Location: ./index.php ");
+        }
     }
 }
 ?>
@@ -26,11 +34,11 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./estilos/styleApagar.css" />
     <title>FIM DE CAMPEONATO</title>
 </head>
 
 <body>
-    <button>Iniciar novo campeonato</button>
 </body>
 
 </html>
