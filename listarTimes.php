@@ -30,13 +30,6 @@
     <div class="resultados">
         <?php
 
-        $pagina_atual = filter_input(INPUT_GET, "page", FILTER_SANITIZE_NUMBER_INT);
-        $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
-
-        // $limite_resultado = 2;
-
-        // $inicio = ($limite_resultado * $pagina) - $limite_resultado;
-
         $query_times = "SELECT id, nome, jogador1, jogador2, pontuacao FROM tbtime ORDER BY pontuacao DESC";
         $result_times = $conn->prepare($query_times);
         $result_times->execute();
@@ -63,7 +56,6 @@
         ?>
     </div>
     <div class="centralizar"><a href="./cadastrarTimes.php"><button class="btnInscrever">INSCREVER MAIS UM TIME</button></a></div>
-    <a href="./apagarTimes.php">Teste apgar times</a>
 </body>
 
 </html>

@@ -14,7 +14,7 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./estilos/styleVitoria.css" />
-    <title>Document</title>
+    <title>FIM DE CAMPEONATO</title>
 </head>
 
 <body>
@@ -33,7 +33,7 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
     ?>
     <div class="msgCampeao">CAMPEÕES!!!</div>
     <div class="centralizar"><img src="./estilos/campeao.png" width="300px" height="300px"></div>
-    <h1 class="centralizar">PARABÉNS AO TIME: <?php echo $id ?></h1><br>
+    <h1 class="centralizar">PARABÉNS AO TIME: <?php echo $nome ?></h1><br>
     <div class="centralizar">NOME DO JOGADOR 1: <?php echo $jogador1 ?></div><br>
     <div class="centralizar"> NOME DO JOGADOR 1: <?php echo $jogador2 ?></div><br>
     <?php echo "<div class='centralizar'><a href='./apagarTimes.php'><button class='btnIniciarCamp'>INICIAR NOVO CAMPEONATO</button></a></div>"; ?>

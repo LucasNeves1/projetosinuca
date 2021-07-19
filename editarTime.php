@@ -37,10 +37,9 @@ if (($result_time) and ($result_time->rowCount() != 0)) {
 
 <body>
     <?php
-    //Receber os dados do formulário
+
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-    //Verificar se o usuário clicou no botão
     if (!empty($dados['editTime'])) {
         $empty_input = false;
         $dados = array_map('trim', $dados);

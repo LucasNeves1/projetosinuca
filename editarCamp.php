@@ -35,10 +35,9 @@ if (($result_camp) and ($result_camp->rowCount() != 0)) {
 
 <body>
     <?php
-    //Receber os dados do formulário
+
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-    //Verificar se o usuário clicou no botão
     if (!empty($dados['editCamp'])) {
         $empty_input = false;
         $dados = array_map('trim', $dados);
